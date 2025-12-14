@@ -1,0 +1,14 @@
+package main
+
+// Two Branch Recursion
+// Time Complexity: O(2>n)
+// Space Complexity: O(2>n)
+
+func fibonacci(n int) int {
+	// Base case: n = 0 or 1
+	if n <= 1 {
+		return n
+	}
+	// Recursive case: fib(n) = fib(n - 1) + fib(n - 2)
+	return fibonacci(n-1) + fibonacci(n-2)
+}

@@ -1,2 +1,1 @@
-# dalgo
-Implementation of Data Structures and Algorithms in Go
+Implementation of Data Structures, Algorithms, and Neetcode Problems in Go.

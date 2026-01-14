@@ -6,6 +6,8 @@
 // if there are no elements that appear more than once
 // i want to return false
 
+// Time Complexity: O(n)
+// Space Complexity: O(n)
 package main
 
 func hasDuplicate(nums []int) bool {

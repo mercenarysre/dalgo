@@ -10,7 +10,7 @@
 // otherwise return true
 
 // Time Complexity: O(i + j), n is the length of string s, j is the length of string j
-// Space Complexity: O(1)
+// Space Complexity: O(1), since we have at most 26 different characters, contstant extra space
 package main
 
 func isAnagram(s string, t string) bool {

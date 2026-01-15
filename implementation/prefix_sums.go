@@ -68,3 +68,25 @@ func rangeSum2(a, b int) int {
 	preRight := PrefixArr2[b]
 	return preRight - PreLeft
 }
+
+var PrefixArr3 []int
+
+func generatePrefix3(arr []int) []int {
+	total := 0
+	for _, v := range arr {
+		total = total + v
+		PrefixArr3 = append(PrefixArr3, total)
+	}
+	return PrefixArr3
+}
+
+func rangeSum3(a, b int) int {
+	var PreLeft int
+	if a > 0 {
+		PreLeft = PrefixArr3[a-1]
+	} else {
+		PreLeft = 0
+	}
+	PreRight := PrefixArr3[b]
+	return PreRight - PreLeft
+}

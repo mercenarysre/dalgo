@@ -13,7 +13,13 @@ import (
 	"strings"
 )
 
+// Time Complexity: O(n)
+// Space Compleixty: O(1)
 func isPalindrome(s string) bool {
+	if len(s) == 0 || len(s) == 1 {
+		return false
+	}
+
 	reg, err := regexp.Compile("[^a-zA-Z0-9]+")
 	if err != nil {
 		fmt.Println(err)

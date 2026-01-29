@@ -8,6 +8,8 @@
 
 package main
 
+// Time Complexity: O(n)
+// Space Complexity: 0(1)
 func reverseString(s []byte) []byte {
 	if len(s) == 0 || len(s) == 1 {
 		return s

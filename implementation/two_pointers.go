@@ -67,3 +67,37 @@ func targetSum3(arr []int, target int) (int, int) {
 	}
 	return -1, -1
 }
+
+// assumes array is sorted
+func targetSum4(arr []int, target int) (int, int) {
+	L := 0
+	R := len(arr) - 1
+
+	for L < R {
+		if arr[L]+arr[R] > target {
+			R--
+		} else if arr[L]+arr[R] < target {
+			L++
+		} else {
+			return L, R
+		}
+	}
+	return -1, -1
+}
+
+// assumes array is sorted
+func targetSum5(arr []int, target int) (int, int) {
+	L := 0
+	R := len(arr) - 1
+
+	for L < R {
+		if arr[L]+arr[R] > target {
+			R--
+		} else if arr[L]+arr[R] < target {
+			R++
+		} else {
+			return L, R
+		}
+	}
+	return -1, -1
+}

@@ -35,29 +35,6 @@ func binarySearch(arr []int, target int) int {
 	return -1
 }
 
-func binarySearch1(arr []int, target int) int {
-	// left pointer
-	L := 0
-
-	// right pointer
-	R := len(arr) - 1
-
-	var mid int
-
-	for L <= R {
-		mid = (L + R) / 2
-
-		if target < arr[mid] {
-			R = mid - 1
-		} else if target > arr[mid] {
-			L = mid + 1
-		} else {
-			return mid
-		}
-	}
-	return -1
-}
-
 // Time Complexity: O(logn)
 // Space Complexity: O(1)
 // Binary Search variation for a range of numbers rather than an array,

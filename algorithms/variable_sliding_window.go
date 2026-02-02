@@ -4,7 +4,7 @@ package main
 // and we need to keep expanding the window as long as the
 // window meets a certain constraint
 
-// Find the length of the longest subarray wih the
+// Find the length of the longest subarray with	the
 // same value in each position; longest string of duplicates
 // Time Complexity: O(n)
 // Space Complexity: O(1)

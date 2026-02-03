@@ -16,7 +16,7 @@ func closeDuplicates(arr []int, k int) bool {
 	for R := 0; R < len(arr); R++ {
 
 		// shrink window if size > k
-		if R-L+1 > k {
+		if R-L > k {
 			// remove element that is no longer in the window and shift left pointer of the array
 			delete(window, arr[L])
 			L++
@@ -28,6 +28,64 @@ func closeDuplicates(arr []int, k int) bool {
 		}
 
 		// add current element
+		window[arr[R]] = struct{}{}
+	}
+	return false
+}
+
+func closeDuplicates1(arr []int, k int) bool {
+	window := make(map[int]struct{})
+	L := 0
+
+	for R := 0; R < len(arr); R++ {
+		// shrink window (from the left) if the size > k
+		if R-L > k {
+			delete(window, arr[L])
+			L++
+		}
+
+		if _, exists := window[arr[R]]; exists {
+			return true
+		}
+
+		window[arr[R]] = struct{}{}
+	}
+	return false
+}
+
+func closeDuplicates2(arr []int, k int) bool {
+	window := make(map[int]struct{})
+	L := 0
+
+	for R := 0; R < len(arr); R++ {
+		if R-L > k {
+			delete(window, arr[L])
+			L++
+		}
+
+		if _, exists := window[arr[R]]; exists {
+			return true
+		}
+
+		window[arr[R]] = struct{}{}
+	}
+	return false
+}
+
+func closeDuplicates3(arr []int, k int) bool {
+	window := make(map[int]struct{})
+	L := 0
+
+	for R := 0; R < len(arr); R++ {
+		if R-L > k {
+			delete(window, arr[L])
+			L++
+		}
+
+		if _, exists := window[arr[R]]; exists {
+			return true
+		}
+
 		window[arr[R]] = struct{}{}
 	}
 	return false
@@ -108,7 +166,7 @@ func longestSubarray4(arr []int) int {
 	L := 0
 
 	for R := 0; R < len(arr); R++ {
-		// check if values in the current window are duplicates
+		// check if values in the current window are not duplicates
 		if arr[L] != arr[R] {
 			L = R
 		}
@@ -210,6 +268,8 @@ func shortestSubarray2(arr []int, target int) int {
 			} else {
 				length = R - L + 1
 			}
+			sum -= arr[L]
+			L++
 		}
 	}
 	// no valid subarray
@@ -233,8 +293,35 @@ func shortestSubarray3(arr []int, target int) int {
 			} else {
 				length = R - L + 1
 			}
+			sum -= arr[L]
+			L++
 		}
 	}
+	if length == len(arr)+1 {
+		return 0
+	}
+	return length
+}
+
+func shortestSubarray4(arr []int, target int) int {
+	L := 0
+	sum := 0
+	length := len(arr) + 1
+
+	for R := 0; R < len(arr); R++ {
+		sum += arr[R]
+
+		for sum >= target {
+			if length < R-L+1 {
+				length = length
+			} else {
+				length = R - +1
+			}
+			sum -= arr[L]
+			L++
+		}
+	}
+	// no valid subarray
 	if length == len(arr)+1 {
 		return 0
 	}

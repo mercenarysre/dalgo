@@ -6,13 +6,12 @@ func binarySearch(arr []int target int) int {
 
 	var M int 
 
-	for L <=R {
-		M = (L + R)/2
-
-		if target > arr[M] {
-			L = mid + 1
-		} else if target < arr[M] {
-			R = mid - 1
+	for L <= R {
+		M = (L + R)/2 
+		if arr[M] > target {
+			R = M - 1 
+		} else if arr[M] < target {
+			L = M + 1
 		} else {
 			return M 
 		}
@@ -27,12 +26,11 @@ func binarySearch1(arr []int, target int) int {
 	var M int 
 
 	for L <= R {
-		M = (L + R) / 2
-
-		if target < arr[M] {
-			R = M - 1
-		} else if target > arr[M] {
-			L = M + 1 
+		M = (L + R)/2 
+		if arr[M] > target {
+			R = M - 1 
+		} else if arr[M] < target {
+			L = M + 1
 		} else {
 			return M 
 		}
@@ -47,12 +45,11 @@ func binarySearch2(arr []int, target int) int {
 	var M int 
 	
 	for L <= R {
-		M = (L + R)/2
-
-		if target > arr[M] {
-			L = M + 1
-		} else if target < arr[M] {
+		M = (L + R)/2 
+		if arr[M] > target {
 			R = M - 1 
+		} else if arr[M] < target {
+			L = M + 1
 		} else {
 			return M 
 		}
@@ -68,11 +65,10 @@ func binarySearch3(arr []int, target int) int {
 
 	for L <= R {
 		M = (L + R)/2 
-
-		if target > arr[M] {
+		if arr[M] > target {
+			R = M - 1 
+		} else if arr[M] < target {
 			L = M + 1
-		} else if target < arr[M] {
-			R = M - 1
 		} else {
 			return M 
 		}
@@ -94,6 +90,70 @@ func binarySearch4(arr []int, target int) int {
 			L = M + 1
 		} else {
 			return M 
+		}
+	}
+	return -1
+}
+
+func binarySearchRange1(low, high int) int {
+	var mid int
+
+	for low <= high {
+		mid = (low + high)/2
+		if mid > 10 {
+			high = mid - 1 
+		} else if mid < 10 {
+			low = mid + 1
+		} else {
+			return mid
+		}
+	}
+	return -1
+}
+
+func binarySearchRange2(low, high int) int {
+	var mid int 
+
+	for low <= high {
+		mid = (low + high)/2
+		if mid > 10 {
+			high = mid - 1
+		} else if mid < 10 {
+			low = mid + 1
+		} else {
+			return mid 
+		}
+	}
+	return -1 
+}
+
+func binarySearchRange3(low, high int) int {
+	var mid int 
+
+	for low <= high {
+		mid = (low + high)/2
+		if mid > 10 {
+			high = mid - 1
+		} else if mid < 10 {
+			low = mid + 1 
+		} else {
+			return mid 
+		}
+	}
+	return -1
+}
+
+func binarySearchRange4(low, high int) int {
+	var mid int 
+
+	for low <= high {
+		mid = (low + high)/2 
+		if mid > 10 {
+			high = mid - 1
+		} else if mid < 10 {
+			low = mid + 1
+		} else {
+			return mid 
 		}
 	}
 	return -1

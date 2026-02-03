@@ -37,8 +37,7 @@ func binarySearch(arr []int, target int) int {
 
 // Time Complexity: O(logn)
 // Space Complexity: O(1)
-// Binary Search variation for a range of numbers rather than an array,
-// without a specific target
+// Binary Search variation for a range of numbers rather than an array with a specific target
 func binarySearchRange(low, high int) int {
 	var mid int
 

@@ -10,6 +10,8 @@
 // maxprofit, maxprofit is equal to profit variable
 // return maxprofit or return zero
 
+// Time Complexity: O(n)
+// Space Complexity: O(1)
 package main
 
 func maxProfit(prices []int) int {
@@ -24,8 +26,36 @@ func maxProfit(prices []int) int {
 	for R := 1; R < len(prices); R++ {
 		profit = prices[R] - prices[L]
 
-		if profit <= 0 {
-			L++
+		if profit < 0 {
+			L = R
+			continue
+		}
+		if profit < maxprofit {
+			maxprofit = maxprofit
+		} else {
+			maxprofit = profit
+		}
+	}
+	if maxprofit > 0 {
+		return maxprofit
+	}
+	return 0
+}
+
+func maxProfit(prices []int) int {
+	var maxprofit int
+	var profit int
+	L := 0
+
+	if len(prices) <= 1 {
+		return 0
+	}
+
+	for R := 1; R < len(prices); R++ {
+		profit = prices[R] - prices[L]
+
+		if prices[R] < prices[L] {
+			L = R
 		} else if profit < maxprofit {
 			maxprofit = maxprofit
 		} else if profit >= maxprofit {

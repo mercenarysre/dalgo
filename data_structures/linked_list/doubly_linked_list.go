@@ -4,31 +4,31 @@ import (
 	"fmt"
 )
 
-type DoublyLinkedListNode struct {
+type ListNode struct {
 	val  int
-	next *DoublyLinkedListNode
-	prev *DoublyLinkedListNode
-}
-
-type DoublyLinkedList struct {
-	head *DoublyLinkedListNode
-	tail *DoublyLinkedListNode
+	next *ListNode
+	prev *ListNode
 }
 
 // instance of DoublyLinkedListNode
-func NewDoublyLinkedListNode(val int) *DoublyLinkedListNode {
-	return &DoublyLinkedListNode{
+func ListNode(val int) *ListNode {
+	return &ListNode{
 		val:  val,
 		next: nil,
 		prev: nil,
 	}
 }
 
+type DoublyLinkedList struct {
+	head *ListNode
+	tail *ListNode
+}
+
 // instance of DoublyLinkedList
 func NewDoublyLinkedList() *DoublyLinkedList {
 	// head and tail are dummy nodes in the linkedin list
-	head := NewDoublyLinkedListNode(-1)
-	tail := NewDoublyLinkedListNode(-1)
+	head := ListNode(-1)
+	tail := ListNode(-1)
 	head.next = tail
 	tail.prev = head
 	return &DoublyLinkedList{
@@ -71,7 +71,7 @@ func (d *DoublyLinkedList) Search(n int) {
 
 // Insertion in front of DoublyLinkedList
 func (d *DoublyLinkedList) InsertFront(val int) {
-	newNode := NewDoublyLinkedListNode(val)
+	newNode := ListNode(val)
 
 	// case when the doubly linked list is empty
 	if d.head == nil {
@@ -88,7 +88,7 @@ func (d *DoublyLinkedList) InsertFront(val int) {
 
 // Insertion at end	of DoublyLinkedList
 func (d *DoublyLinkedList) InsertEnd(val int) {
-	newNode := NewDoublyLinkedListNode(val)
+	newNode := ListNode(val)
 
 	if d.head == nil {
 		d.head = newNode
@@ -137,7 +137,7 @@ func (d *DoublyLinkedList) RemoveEnd() {
 
 func (d *DoublyLinkedList) Print() {
 	// dummy head node, start printing from first element/node
-	curr := d.head.next
+	curr := d.head.next // curr := d.head
 	for curr != d.tail {
 		fmt.Printf("%d -> ", curr.val)
 		curr = curr.next

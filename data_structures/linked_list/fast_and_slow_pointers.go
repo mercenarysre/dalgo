@@ -8,16 +8,16 @@ type ListNode struct {
 	Next *ListNode // next node: link to next node
 }
 
-type SinglyLinkedList struct {
-	Head *ListNode
-	Tail *ListNode
-}
-
 func NewListNode(val int) *ListNode {
 	return &ListNode{
 		Val:  val,
 		Next: nil,
 	}
+}
+
+type SinglyLinkedList struct {
+	Head *ListNode
+	Tail *ListNode
 }
 
 func NewSinglyLinkedList() *SinglyLinkedList {

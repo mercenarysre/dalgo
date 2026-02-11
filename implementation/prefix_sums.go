@@ -112,3 +112,25 @@ func rangeSum4(a, b int) int {
 	PreRight := PrefixArr4[b]
 	return PreRight - PreLeft
 }
+
+var PrefixArr5 []int
+
+func generatePrefix5(arr []int) []int {
+	total := 0
+	for _, v := range arr {
+		total = total + v
+		PrefixArr5 = append(PrefixArr5, total)
+	}
+	return PrefixArr5
+}
+
+func rangeSum(a, b int) int {
+	var PreLeft int
+	if a > 0 {
+		PreLeft = PrefixArr5[a-1]
+	} else {
+		PreLeft = 0
+	}
+	PreRight := PrefixArr5[b]
+	return PreRight - PreLeft
+}

@@ -94,7 +94,70 @@ func targetSum5(arr []int, target int) (int, int) {
 		if arr[L]+arr[R] > target {
 			R--
 		} else if arr[L]+arr[R] < target {
-			R++
+			L++
+		} else {
+			return L, R
+		}
+	}
+	return -1, -1
+}
+func targetSum6(arr []int, target int) (int, int) {
+	L := 0
+	R := len(arr) - 1
+
+	for L < R {
+		if arr[L]+arr[R] > target {
+			R--
+		} else if arr[L]+arr[R] < target {
+			L++
+		} else {
+			return L, R
+		}
+	}
+	return -1, -1
+}
+
+func targetSum7(arr []int, target int) (int, int) {
+	L := 0
+	R := len(arr) - 1
+
+	for L < R {
+		if arr[L]+arr[R] > target {
+			R--
+		} else if arr[L]+arr[R] < target {
+			L++
+		} else {
+			return L, R
+		}
+	}
+	return -1, -1
+}
+
+func targetSum8(arr []int, target int) (int, int) {
+	L := 0
+	R := len(arr) - 1
+
+	for L < R {
+		if arr[L]+arr[R] > target {
+			R--
+		} else if arr[L]+arr[R] < target {
+			L++
+		} else {
+			return L, R
+		}
+	}
+	return -1, -1
+}
+
+func targetSum9(arr []int, target int) (int, int) {
+	L := 0
+	R := len(arr) - 1
+
+	for L < R {
+		if arr[L]+arr[R] > target {
+			R--
+		} else if arr[L]+arr[R] < target {
+			L++
 		} else {
 			return L, R
 		}

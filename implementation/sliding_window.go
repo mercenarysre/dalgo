@@ -130,7 +130,45 @@ func closeDuplicates5(arr []int, k int) bool {
 	return false
 }
 
-func closeDuplicates5(arr []int, k int) bool {
+func closeDuplicates6(arr []int, k int) bool {
+	window := make(map[int]struct{})
+	L := 0
+
+	for R := 0; R < len(arr); R++ {
+		if R-L > k {
+			delete(window, arr[L])
+			L++
+		}
+
+		if _, ok := window[arr[R]]; ok {
+			return true
+		}
+
+		window[arr[R]] = struct{}{}
+	}
+	return false
+}
+
+func closeDuplicates7(arr []int, k int) bool {
+	window := make(map[int]struct{})
+	L := 0
+
+	for R := 0; R < len(arr); R++ {
+		if R-L > k {
+			delete(window, arr[L])
+			L++
+		}
+
+		if _, ok := window[arr[R]]; ok {
+			return true
+		}
+
+		window[arr[R]] = struct{}{}
+	}
+	return false
+}
+
+func closeDuplicates8(arr []int, k int) bool {
 	window := make(map[int]struct{})
 	L := 0
 

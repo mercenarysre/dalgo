@@ -42,6 +42,8 @@ func (s *Stack) Push(n int) {
 	s.stack = append(s.stack, n)
 }
 
+// Time Complexity: O(n)
+// Space Complexity: O(n)
 func evalRPN(tokens []string) int {
 	var items []int
 	stacks := NewStack(items)
@@ -69,7 +71,8 @@ func evalRPN(tokens []string) int {
 			// stacks.stack = append(stacks.stack, b/a)
 		} else {
 			num, _ := strconv.Atoi(token)
-			stacks.stack = append(stacks.stack, num)
+			stacks.Push(num)
+			// stacks.stack = append(stacks.stack, num)
 		}
 	}
 	return stacks.Read()

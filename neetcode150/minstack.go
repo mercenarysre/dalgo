@@ -32,7 +32,7 @@ func (this *MinStack) Pop() int {
 
 // Time Complexity: O(1)
 // Space Complexity: O(1)
-func (this *MinStack) Top() int {
+func (this *MinStack) Read() int {
 	if len(this.stack) == 0 {
 		fmt.Println("Stack is Empty")
 		return -1
@@ -63,7 +63,7 @@ func (this *MinStack) GetMin() int {
 	var tmp []int
 	tmp1 := Constructor(tmp)
 
-	min := this.Top()
+	min := this.Read()
 
 	for !this.Empty() {
 		val := this.Pop()

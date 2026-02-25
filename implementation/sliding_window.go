@@ -187,6 +187,46 @@ func closeDuplicates8(arr []int, k int) bool {
 	return false
 }
 
+func closeDuplicates9(arr []int, k int) bool {
+	window := make(map[int]struct{})
+
+	L := 0
+
+	for R := 0; R < len(arr); R++ {
+		if R-L > k {
+			delete(window, arr[L])
+			L++
+		}
+
+		if _, ok := window[arr[R]]; ok {
+			return true
+		}
+
+		window[arr[R]] = struct{}{}
+	}
+	return false
+}
+
+func closeDuplicates10(arr []int, k int) bool {
+	window := make(map[int]struct{})
+
+	L := 0
+
+	for R := 0; R < len(arr); R++ {
+		if R-L > k {
+			delete(window, arr[L])
+			L++
+		}
+
+		if _, ok := window[arr[R]]; ok {
+			return true
+		}
+
+		window[arr[R]] = struct{}{}
+	}
+	return false
+}
+
 // length of the longest subarray with the same value in each position
 // longest string of duplicates
 func longestSubarray(arr []int) int {
@@ -301,6 +341,42 @@ func longestSubarray6(arr []int) int {
 		if arr[L] != arr[R] {
 			L = R
 		}
+		if length < R-L+1 {
+			length = R - L + 1
+		} else {
+			length = length
+		}
+	}
+	return length
+}
+
+func longestSubarray7(arr []int) int {
+	L := 0
+	length := 0
+
+	for R := 0; R < len(arr); R++ {
+		if arr[L] != arr[R] {
+			L = R
+		}
+
+		if length < R-L+1 {
+			length = R - L + 1
+		} else {
+			length = length
+		}
+	}
+	return length
+}
+
+func longestSubarray8(arr []int, target int) int {
+	L := 0
+	length := 0
+
+	for R := 0; R < len(arr); R++ {
+		if arr[L] != arr[R] {
+			L = R
+		}
+
 		if length < R-L+1 {
 			length = R - L + 1
 		} else {
@@ -435,6 +511,30 @@ func shortestSubarray4(arr []int, target int) int {
 		}
 	}
 	// no valid subarray
+	if length == len(arr)+1 {
+		return 0
+	}
+	return length
+}
+
+func shortestSubarray5(arr []int, target int) int {
+	L := 0
+	sum := 0
+	length := len(arr) + 1
+
+	for R := 0; R < len(arr); R++ {
+		sum = sum + arr[R]
+
+		for sum >= target {
+			if length < R-L+1 {
+				length = length
+			} else {
+				length = R - L + 1
+			}
+			sum = sum - arr[L]
+			L++
+		}
+	}
 	if length == len(arr)+1 {
 		return 0
 	}

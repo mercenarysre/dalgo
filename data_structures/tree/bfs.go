@@ -22,7 +22,8 @@ func NewTreeNode(val int) *TreeNode {
 
 // For breath-first search (BFS), we prioritize breadth,
 // meaning we focus on visiting all the nodes on one level before moving on to the next level
-// BFS is also known as level-order traversal when referring to trees, since we visit the nodes level by level
+// BFS is also known as level-order traversal when referring to trees,
+// since we visit the nodes level by level
 
 // A queue data structure, more specifically, a deque,
 // allows us to remove elements both from the head and the tail in O(1) time.
@@ -53,7 +54,8 @@ func (root *TreeNode) BFS() {
 	// We loop through the queue and remove nodes in the current level.
 	// If the node has children, we append them to the queue from left to right.
 	// After the current level is done, we increment the level by 1.
-	// Our queue becomes empty once we have visited all of the nodes and the outer while loop will terminate.
+	// Our queue becomes empty once we have visited all of the nodes
+	// and the outer while loop will terminate.
 	var queue deque.Deque
 	if root != nil {
 		queue.PushBack(root)
@@ -64,12 +66,12 @@ func (root *TreeNode) BFS() {
 		levelLength := queue.Len()
 		for i := 0; i < levelLength; i++ {
 			curr := queue.PopFront().(*TreeNode)
-			fmt.Printf("%d ", curr.val)
-			if curr.left != nil {
-				queue.PushBack(curr.left)
+			fmt.Printf("%d ", curr.Val)
+			if curr.Left != nil {
+				queue.PushBack(curr.Left)
 			}
-			if curr.right != nil {
-				queue.PushBack(curr.right)
+			if curr.Right != nil {
+				queue.PushBack(curr.Right)
 			}
 		}
 		level++

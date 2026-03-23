@@ -32,9 +32,9 @@ func NewTreeNode(val int) *TreeNode {
 // Time Complexity: O(n), visiting every single node(the size of the tree)
 // regardless of the height of the tree
 // Space Complexity: O(h), height of the tree which would be O(logn) for a balanced binary tree
-// or O(n) for a skewed
+// or O(n) for a skewed tree
 
-// Searching: Three methods of Searching: the method below, DFS or BFS.
+// Searching: Three methods of Searching: the method below(Search), DFS, BFS.
 // Time Complexity: O(logn) if the tree is balanced
 // Space Complexity: O(h), where h is the height of the tree,
 func (root *TreeNode) Search(target int) bool {
@@ -82,7 +82,8 @@ func (root *TreeNode) PostOrder() {
 
 // Breadth First Search
 // Time Complexity: O(n), we visit each node exactly once
-// Space Complexity: O(n), we implement a queue, we store an entire level of the tree in the queue at a time
+// Space Complexity: O(n), we implement a queue, we store an entire level of the tree
+// in the queue at a time
 func (root *TreeNode) BFS() {
 	var queue deque.Deque
 	if root != nil {
@@ -127,6 +128,24 @@ func (root *TreeNode) Insert(val int) *TreeNode {
 	return root
 }
 
+// Return the minimum value node of the BST.
+func (root *TreeNode) MinValueNode() *TreeNode {
+	curr := root
+	for curr != nil && curr.Left != nil {
+		curr = curr.Left
+	}
+	return curr
+}
+
+// Return the maximum value node of the BST.
+func (root *TreeNode) MaxValueNode() *TreeNode {
+	curr := root
+	for curr != nil && curr.Right != nil {
+		curr = curr.Right
+	}
+	return curr
+}
+
 // Deletion: a recursive function, deletion with no child, one child, two children
 
 //	If the node being deleted has no children, simply delete it.
@@ -151,7 +170,6 @@ func (root *TreeNode) Insert(val int) *TreeNode {
 // O(n) in the worst case, if the tree is unbalanced
 // this is because we are using recursion to traverse the tree, and
 // the number of recursive calls is proportional to the height of the tree.
-// REWRITE THIS CODE
 func (root *TreeNode) Remove(val int) *TreeNode {
 	if root == nil {
 		return nil
@@ -161,9 +179,11 @@ func (root *TreeNode) Remove(val int) *TreeNode {
 	} else if val < root.Val {
 		root.Left = root.Left.Remove(val)
 	} else { // val == root.Val
-		if root.Left == nil {
+		if root.Left == nil && root.Right == nil {
+			return nil
+		} else if root.Left == nil && root.Right != nil {
 			return root.Right
-		} else if root.Right == nil {
+		} else if root.Left != nil && root.Right == nil {
 			return root.Left
 		} else {
 			minNode := root.Right.MinValueNode()
@@ -172,22 +192,4 @@ func (root *TreeNode) Remove(val int) *TreeNode {
 		}
 	}
 	return root
-}
-
-// Return the minimum value node of the BST.
-func (root *TreeNode) MinValueNode() *TreeNode {
-	curr := root
-	for curr != nil && curr.Left != nil {
-		curr = curr.Left
-	}
-	return curr
-}
-
-// Return the maximum value node of the BST.
-func (root *TreeNode) MaxValueNode() *TreeNode {
-	curr := root
-	for curr != nil && curr.Right != nil {
-		curr = curr.Right
-	}
-	return curr
 }

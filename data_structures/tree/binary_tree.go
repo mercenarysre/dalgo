@@ -36,7 +36,7 @@ func (root *TreeNode) Search(target int) bool {
 	return true
 }
 
-// Depth First Search
+// Depth First Search*
 func (root *TreeNode) PreOrder() {
 	if root == nil {
 		return
@@ -92,4 +92,3 @@ func (root *TreeNode) BFS() {
 // root := NewTreeNode(10)
 // root.Left = NewTreeNode(5)
 // root.Right = NewTreeNode(15)
-// root.Left.Left = NewTreeNode(3)

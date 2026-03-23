@@ -99,6 +99,7 @@ func (s *SinglyLinkedList) RemoveBeginning() {
 	// case of where list is empty, head is nil
 	if s.Head == nil {
 		fmt.Println("The linked list is empty")
+		return
 	}
 
 	if s.Head == s.Tail {

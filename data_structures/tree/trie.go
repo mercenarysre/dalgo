@@ -1,9 +1,8 @@
 package main
 
-// A trie is a tree which is a collection of nodes that point to any number of nodes;
-// not a binary tree.
+// A trie is a tree which is a collection of nodes that point to any number of nodes; not a binary tree.
 // the root node contains a hash table with the keys "a", "b", and "c". The
-// values are other trie nodes, which are the children of this node.
+// values of these keys are other trie nodes, which are the children of this root node.
 
 // Trie Struct: keeps track of the root node
 // Implementation of a TrieNode: contains a hash table and a word (false/true) attribute which determines
@@ -39,7 +38,7 @@ func NewTrie() *Trie {
 // Time Complexity: O(k)
 // we iterate a single time for each character of the target word
 // where k is the length of the target word, not data elements of the trie data structure
-// Space Complexity:
+// Space Complexity: O(1)
 // We iterate through each character of the word we want to insert,
 // if the character does not exist, we can insert it into the trie
 // along with its children; Otherwise we can keep tracing down the trie
@@ -60,10 +59,10 @@ func (t *Trie) Insert(word string) {
 // Time Complexity: O(k)
 // we iterate a single time for each character of the target word
 // where k is the length of the target word, not data elements of the trie data structure
-// Space Complexity:
+// Space Complexity: O(1)
 // Search whether a word exists in the trie and return a boolean
 // we iterate through each character and as soon as we encounter a character
-// that is not the trie, we can return false
+// that is not the trie, swe can return false
 // It could also be the case that every single character exists but the
 // last character is not marked as a word(false)
 func (t *Trie) Search(word string) bool {
